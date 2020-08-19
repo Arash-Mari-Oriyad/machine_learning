@@ -1,5 +1,5 @@
 # machine_learning
 
-Some awesome little machine learning projects :)
+Some awesome simple machine learning projects :)
 
 Project names: problem-name + algorithm + dataset-name

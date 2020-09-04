@@ -2,7 +2,7 @@
 
 Some awesome simple machine learning projects :)
 
-Project names: problem-name + algorithm + dataset-name
+Project names: problem-name + algorithm + sub-algorithm(optional) + dataset-name
 
 Algorithms:
 - nn: neural network

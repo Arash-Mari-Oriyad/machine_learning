@@ -3,7 +3,7 @@ import time
 import tkinter as tk
 
 UNIT = 100
-DUNGEON_LENGTH = 4
+DUNGEON_LENGTH = 5
 ORIGIN = np.array([UNIT / 2, UNIT / 2])
 
 

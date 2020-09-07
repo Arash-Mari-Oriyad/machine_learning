@@ -6,7 +6,7 @@ UNIT = 100
 MAZE_HEIGHT = 6
 MAZE_WIDTH = 6
 ORIGIN = np.array([UNIT / 2, UNIT / 2])
-PITS_COORDINATION = [(2, 1), (1, 2), (4, 3), (2, 4), (5, 2), (3, 5)]
+PITS_COORDINATION = [(2, 1), (1, 2), (4, 3), (3,3)]
 DESTINATION_COORDINATION = (5, 3)
 
 

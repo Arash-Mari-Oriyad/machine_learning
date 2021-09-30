@@ -8,12 +8,12 @@ matplotlib.use('TkAgg')
 ACTION_SPACE = {0: 'up', 1: 'down', 2: 'right', 3: 'left'}
 PIT_REWARD = -100
 WALL_REWARD = -10
-DESTINATION_REWARD = 100
+DESTINATION_REWARD = 1000
 ALPHA = 0.01
 GAMMA = 0.9
 EPSILON = 0.8
 DELAY_TIME = 0.1
-EPISODE_COUNT = 150
+EPISODE_COUNT = 200
 movements = []
 
 
@@ -26,7 +26,7 @@ def run_experiment():
             current_state = calculate_state_number(environment.canvas.coords(environment.agent))
             environment.render(DELAY_TIME)
             action = agent.choose_action(current_state)
-            reward = environment.get_reward(action)
+            reward = environment.get_reward(action, 0)
             next_state = calculate_state_number(environment.next_coordination(action))
             agent.learn(current_state, action, reward, next_state)
             environment.move(action)
@@ -46,7 +46,6 @@ def plot_rewards_movements():
     plt.plot(list(range(EPISODE_COUNT)), movements)
     plt.xlabel('Episode')
     plt.ylabel('#Movements')
-    # plt.savefig('rewards_movements.png')
     plt.show()
     return
 

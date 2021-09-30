@@ -6,7 +6,7 @@ UNIT = 100
 MAZE_HEIGHT = 6
 MAZE_WIDTH = 6
 ORIGIN = np.array([UNIT / 2, UNIT / 2])
-PITS_COORDINATION = [(2, 1), (1, 2), (4, 3), (3,3), (5, 2), (4, 4)]
+PITS_COORDINATION = [(2, 1), (1, 2), (4, 3), (3, 3), (5, 2), (4, 4)]
 DESTINATION_COORDINATION = (5, 3)
 
 
@@ -97,23 +97,24 @@ class Maze:
         self.canvas.move(self.agent, base_action[0], base_action[1])
         return
 
-    def get_reward(self, action):
+    def get_reward(self, action, n_steps):
         current_coordination = self.canvas.coords(self.agent)
         current_state = calculate_state_number(current_coordination)
         next_coordination = self.next_coordination(action)
         next_state = calculate_state_number(next_coordination)
-        reward = 0
+        reward = -n_steps
         if current_state == next_state:
-            reward = self.wall_reward
+            reward += self.wall_reward
         elif next_state == calculate_state_number(self.canvas.coords(self.destination)):
-            reward = self.destination_reward
+            reward += self.destination_reward
         elif next_state in [calculate_state_number(self.canvas.coords(pit)) for pit in self.pits]:
-            reward = self.pit_reward
+            reward += self.pit_reward
         return reward
 
     def is_finished(self):
         current_coordination = self.canvas.coords(self.agent)
-        if calculate_state_number(current_coordination) == calculate_state_number(self.canvas.coords(self.destination)) \
+        if calculate_state_number(current_coordination) == \
+                calculate_state_number(self.canvas.coords(self.destination)) \
                 or calculate_state_number(current_coordination) in [calculate_state_number(self.canvas.coords(pit))
                                                                     for pit in self.pits]:
             return True
